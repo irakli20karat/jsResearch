@@ -26,6 +26,28 @@ console.log("sum:", sum, "product:", product);
 
 // #4. Boolean(s) & logic
 // Boolean can be either true or false.
+// if(condition) <==== condition can be either true or false, 
+// to create conditions we use operators such as:
+/*
+    '==' compares if values are equal (unlike '=' which sets values),
+    '===' compares if values are equal (unlike '==', it also compares types),
+    '>' check if first value is larger,
+    '<' check if second value is larger,
+    '<=' check if first value is larger or equal,
+    '>=' check if second value is larger or equal,
+    '!' is used for NOT condition,
+
+    '||' is used for OR condition,
+    '&&' is used for AND condition,
+*/
+console.log("5 == '5':", 5 == "5");                            // is 5 equal to "5"? // returns true
+console.log("5 === '5':", 5 === "5");                          // is 5 equal to "5"? // returns false since 5 is an integer and "5" is a string
+console.log("10 != 7:", 10 != 7);                              // is 10 NOT equal to 7? // returns true
+console.log("10 > 2:", 10 > 2);                                // is 10 larger than 2? // returns true
+console.log("10 <= 10:", 10 <= 10);                            // is 10 smaller or equals 10? // returns true
+console.log("12 < 10:", 12 < 10);                              // is 12 smaller than 10? // returns false
+console.log("12 < 10 OR 12 != 10:", (12 < 10 || 12 != 10));    // (is 12 smaller than 10) OR (is 12 NOT equal to 10)? // returns true
+
 let isAdult = ((new Date().getFullYear()) - BIRTH_YEAR >= 18); // if Current year minus BIRTH_YEAR is larger or equals 18, then set isAdult's value to true, otherwise set isAdult's value to false.
 console.log("is adult:", isAdult); // outputs: "is adult: false", since 2025-2009 is smaller than 18.
 
@@ -78,3 +100,10 @@ console.log("user.name:", user.name); // outputs the exact parameter that we nee
 // #9. String concatenation vs template string
 console.log("Hello " + userName + ", you are " + (new Date().getFullYear() - BIRTH_YEAR) + " years old.");
 console.log(`Hello ${userName}, you are ${(new Date().getFullYear() - BIRTH_YEAR)} years old.`);
+
+// #10. Default parameters
+function greet2(name = "John Doe") {
+    console.log(`Hello, ${name}!`);
+}
+greet2();          // uses default value
+greet2("Ika");     // uses provided value
