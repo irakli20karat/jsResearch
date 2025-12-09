@@ -157,5 +157,5 @@ console.log(`Hello ${userName}, you are ${(new Date().getFullYear() - BIRTH_YEAR
 function greet2(name = "John Doe") {
     console.log(`Hello, ${name}!`);
 }
-greet2();// uses default value
+greet2(); // uses default value
 greet2("Ika"); // uses provided value
