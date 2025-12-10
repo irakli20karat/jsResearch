@@ -40,7 +40,7 @@ let sum = x + y;
 let product = x * y;
 console.log("sum:", sum, "product:", product);
 
-// #4. Boolean(s) & logic
+// #4. Boolean(s) & logic (check line 163)
 // Boolean can be either true or false.
 // if(condition) <==== condition can be either true or false, 
 // to create conditions we use operators such as:
@@ -159,3 +159,54 @@ function greet2(name = "John Doe") {
 }
 greet2(); // uses default value
 greet2("Ika"); // uses provided value
+
+// #11. if / else examples
+// 1. Basic if/else
+let temperature = 30;
+
+if (temperature > 25) {
+    console.log("It's hot outside.");
+} else {
+    console.log("It's not very hot right now.");
+}
+
+
+// 2. if / else if / else chain
+let score = 87;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 75) {
+    console.log("Grade: B");
+} else if (score >= 60) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: F");
+}
+
+
+// 3. Nested if (if inside if)
+let loggedIn = true;
+let isAdmin = false;
+
+if (loggedIn) {
+    console.log("You are logged in.");
+
+    if (isAdmin) {
+        console.log("Welcome, Admin.");
+    } else {
+        console.log("Regular user access.");
+    }
+
+} else {
+    console.log("Please log in first!");
+}
+
+
+// 4. Ternary operator (short if/else)
+let age = 15;
+let canDrive = age >= 18 ? "Yes" : "No";
+console.log("Can the user drive?", canDrive);
+// same as:
+// if (age >= 18) { canDrive = "Yes"; }
+// else { canDrive = "No"; }
