@@ -40,7 +40,7 @@ let sum = x + y;
 let product = x * y;
 console.log("sum:", sum, "product:", product);
 
-// #4. Boolean(s) & logic (check line 163)
+// #4. Boolean(s) & logic (check line 278)
 // Boolean can be either true or false.
 // if(condition) <==== condition can be either true or false, 
 // to create conditions we use operators such as:
@@ -127,7 +127,23 @@ function scopeTest() {
 }
 scopeTest();
 
-// #7. Arrays & loops
+// #7. LOOPS
+/* WHAT ARE LOOPS?
+   A loop is a way to repeat the same code multiple times.
+   Instead of writing the same code over and over, loops execute a block of code
+   as long as a specified condition is true.
+   
+   MAIN LOOP TYPES:
+   1. for loop      => Best when you know exactly how many times to repeat
+   2. while loop    => Best when you don't know how many times to repeat
+   3. do...while    => Executes at least once, then checks condition
+   4. for...of      => Iterates over values in arrays or strings
+   5. for...in      => Iterates over keys/properties of objects
+   6. forEach()     => Built-in array method to iterate
+*/
+
+// --- 1. FOR LOOP ---
+// Structure: for (initialize; condition; increment/decrement)
 // the first element has an index of 0, the second element has an index of 1, the third element has an index of 2 and so on.
 let colors = ["red", "green", "blue"];
 console.log("colors array:", colors);
@@ -139,6 +155,105 @@ for (let i = 0; i < colors.length; i++) {
     // this way we can iterate through all the elements of the array
     console.log(i, colors[i]); // outputs the exact value (color) that we want using index in brackets.
 }
+
+// Example: Print numbers 1 to 5
+console.log("\nPrinting numbers 1 to 5:");
+for (let num = 1; num <= 5; num++) {
+    console.log(num);
+}
+
+// Example: Counting down from 5 to 1
+console.log("\nCounting down from 5 to 1:");
+for (let count = 5; count >= 1; count--) {
+    console.log(count);
+}
+
+// --- 2. WHILE LOOP ---
+// Structure: while (condition) { code to execute }
+// Repeats as long as the condition is true. Check condition BEFORE executing.
+console.log("\nWhile loop example (printing 1 to 5):");
+let i = 1;
+while (i <= 5) {
+    console.log(i);
+    i++; // IMPORTANT: Don't forget to increment, or you'll have an infinite loop!
+}
+
+// Example: User guessing game
+let secretNumber = 7;
+let guess = null;
+let attempts = 0;
+console.log("\nGuessing game (secret number is 7):");
+while (guess !== secretNumber) {
+    guess = Math.floor(Math.random() * 10) + 1; // random number 1-10
+    attempts++;
+    console.log(`Attempt ${attempts}: guessed ${guess}`);
+}
+console.log("Correct! Found it in", attempts, "attempts.");
+
+// --- 3. DO...WHILE LOOP ---
+// Structure: do { code to execute } while (condition)
+// Executes the code FIRST, then checks the condition.
+// Useful when you want something to happen at least once.
+console.log("\nDo...while loop example:");
+let n = 1;
+do {
+    console.log("This prints at least once, n =", n);
+    n++;
+} while (n <= 3);
+
+// --- 4. FOR...OF LOOP ---
+// Structure: for (const value of array) { code }
+// Iterates over the VALUES in an array.
+// Cleaner than traditional for loop when you don't need the index.
+console.log("\nFor...of loop (iterating over values):");
+let fruits = ["apple", "banana", "orange"];
+for (const fruit of fruits) {
+    console.log(fruit);
+}
+
+// Example: Sum all numbers in an array
+let numbers = [10, 20, 30, 40];
+let total = 0;
+for (const num of numbers) {
+    total += num; // total = total + num
+}
+console.log("Sum of", numbers, "is", total);
+
+// --- 5. FOR...IN LOOP ---
+// Structure: for (const key in object) { code }
+// Iterates over the KEYS (properties) of an object or array indices.
+console.log("\nFor...in loop (iterating over keys/indices):");
+const person = { name: "Alice", age: 25, city: "London" };
+for (const key in person) {
+    console.log(key, "=>", person[key]);
+}
+
+// --- 6. FOREACH() METHOD ---
+// Structure: array.forEach((element, index, array) => { code })
+// Built-in array method. Cleaner syntax using arrow function.
+console.log("\nForEach method:");
+let tasks = ["eat", "sleep", "code"];
+tasks.forEach((task, index) => {
+    console.log(`Task ${index + 1}: ${task}`);
+});
+
+// --- LOOP CONTROL STATEMENTS ---
+// break   => Exits the loop immediately
+// continue => Skips to the next iteration
+
+console.log("\nUsing break (exit loop when value is 3):");
+for (let x = 1; x <= 5; x++) {
+    if (x === 3) break; // stops loop
+    console.log(x);
+}
+// Outputs: 1, 2
+
+console.log("\nUsing continue (skip when value is 3):");
+for (let x = 1; x <= 5; x++) {
+    if (x === 3) continue; // skips this iteration
+    console.log(x);
+}
+// Outputs: 1, 2, 4, 5
 
 // #8. Objects
 const user = {
