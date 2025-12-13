@@ -275,6 +275,7 @@ function greet2(name = "John Doe") {
 greet2(); // uses default value
 greet2("Ika"); // uses provided value
 
+
 // #11. if / else examples
 // 1. Basic if/else
 let temperature = 30;
@@ -325,3 +326,56 @@ console.log("Can the user drive?", canDrive);
 // same as:
 // if (age >= 18) { canDrive = "Yes"; }
 // else { canDrive = "No"; }
+
+
+// #12. NULLISH COALESCING OPERATOR (??)
+/* The nullish coalescing operator (??) returns the right-hand operand when 
+   the left-hand operand is null or undefined. Otherwise, it returns the left-hand operand.
+   
+   IMPORTANT DIFFERENCE from || (OR operator):
+   - ?? only considers null and undefined as "nothing"
+   - || considers 0, "", false, NaN, null, and undefined as "falsy"
+   
+   Use ?? when you want to allow falsy values like 0 or empty strings.
+*/
+
+// Example 1: Basic nullish coalescing
+let userInput = null;
+let displayName = userInput ?? "Guest"; // null, so use "Guest"
+console.log("Display name:", displayName); // "Guest"
+
+let userInput2 = "Alice";
+let displayName2 = userInput2 ?? "Guest"; // "Alice" exists, use it
+console.log("Display name 2:", displayName2); // "Alice"
+
+// Example 2: Why ?? is better than || for certain cases
+let count = 0; // This is a valid value, not "nothing"
+let result1 = count || 10; // With ||, returns 10 (treats 0 as falsy)
+let result2 = count ?? 10; // With ??, returns 0 (0 is not null/undefined)
+console.log("Using ||:", result1); // 10 (wrong! we lost the 0)
+console.log("Using ??:", result2); // 0 (correct! 0 is a valid value)
+
+// Example 3: Empty string
+let userMessage = "";
+let message1 = userMessage || "No message"; // With ||, returns "No message"
+let message2 = userMessage ?? "No message"; // With ??, returns "" (empty string is valid)
+console.log("Using ||:", message1); // "No message"
+console.log("Using ??:", message2); // "" (empty string is a valid value)
+
+// Example 4: Setting default values from API/database
+let apiResponse = undefined;
+let finalValue = apiResponse ?? "default";
+console.log("Final value:", finalValue); // "default"
+
+// Example 5: Chaining with nullish coalescing
+let primaryValue = null;
+let secondaryValue = undefined;
+let tertiaryValue = "Fallback";
+let finalResult = primaryValue ?? secondaryValue ?? tertiaryValue;
+console.log("Final result with chains:", finalResult); // "Fallback"
+
+// Example 6: Combining with other operators
+let userPreference = null;
+let fontSize = userPreference ?? 16;
+console.log("Font size:", fontSize); // 16
+
