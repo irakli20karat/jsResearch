@@ -103,7 +103,7 @@ console.log(Boolean(0));       // false
 console.log(Boolean("hello")); // true
 console.log(Boolean(""));      // false
 
-// 5. Simple function
+// 5. Simple function (check line 436)
 function greet(name) {
     // ${} inside `` lets us insert variables directly into string
     console.log(`o/ ${name}, you are ${(new Date().getFullYear()) - BIRTH_YEAR} years old (you were born in ${BIRTH_YEAR}).`);
@@ -268,15 +268,8 @@ console.log("user.name:", user.name);   // outputs the exact parameter that we n
 console.log("Hello " + userName + ", you are " + (new Date().getFullYear() - BIRTH_YEAR) + " years old.");
 console.log(`Hello ${userName}, you are ${(new Date().getFullYear() - BIRTH_YEAR)} years old.`);
 
-// #10. Default parameters
-function greet2(name = "John Doe") {
-    console.log(`Hello, ${name}!`);
-}
-greet2(); // uses default value
-greet2("Ika"); // uses provided value
 
-
-// #11. if / else examples
+// #10. if / else examples
 // 1. Basic if/else
 let temperature = 30;
 
@@ -328,7 +321,7 @@ console.log("Can the user drive?", canDrive);
 // else { canDrive = "No"; }
 
 
-// #12. NULLISH COALESCING OPERATOR (??)
+// #11. NULLISH COALESCING OPERATOR (??)
 /* The nullish coalescing operator (??) returns the right-hand operand when 
    the left-hand operand is null or undefined. Otherwise, it returns the left-hand operand.
    
@@ -379,3 +372,175 @@ let userPreference = null;
 let fontSize = userPreference ?? 16;
 console.log("Font size:", fontSize); // 16
 
+
+// #12. SWITCH STATEMENT
+/* The switch statement is an alternative to multiple if / else if checks.
+   It compares a value against multiple cases.
+
+   IMPORTANT:
+   - switch uses STRICT comparison (===)
+   - break is REQUIRED, otherwise execution "falls through"
+*/
+
+// Basic switch example
+let day = 3;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday");
+        break;
+    case 4:
+        console.log("Thursday");
+        break;
+    case 5:
+        console.log("Friday");
+        break;
+    default:
+        console.log("Weekend or invalid day");
+}
+
+// Grouping cases (fallthrough on purpose)
+let grade = "B";
+
+switch (grade) {
+    case "A":
+    case "B":
+        console.log("Good job!");
+        break;
+    case "C":
+        console.log("You passed.");
+        break;
+    default:
+        console.log("Try again.");
+}
+
+// switch vs if/else
+// switch is better when:
+// - you compare ONE value
+// - against MANY fixed options
+
+
+// #13. FUNCTION BASICS
+/* Functions are reusable blocks of code.
+   They help avoid repetition and make code easier to read.
+*/
+
+// Function declaration
+function add(a, b) {
+    return a + b; // returns value to caller
+}
+
+let result = add(5, 3);
+console.log("add(5, 3) =", result);
+
+// Function without return (returns undefined)
+function logMessage(msg) {
+    console.log(msg);
+}
+logMessage("Hello");
+
+// Parameters vs arguments
+// parameters => variables in function definition
+// arguments  => actual values passed to function
+
+// Default parameters
+function multiply(a, b = 1) {
+    return a * b;
+}
+console.log(multiply(5));    // 5
+console.log(multiply(5, 2)); // 10
+
+// Functions are VALUES in JS
+let sayHi = function () {
+    console.log("Hi!");
+};
+sayHi();
+
+
+// #14. ARROW FUNCTIONS (=>)
+/* Arrow functions are a shorter syntax for functions.
+   Commonly used in modern JS.
+*/
+
+// Traditional function
+function square(x) {
+    return x * x;
+}
+
+// Arrow function (same thing)
+const squareArrow = (x) => {
+    return x * x;
+};
+
+// Shorter arrow function (implicit return)
+const squareShort = x => x * x;
+
+console.log(squareShort(4)); // 16
+
+// Arrow function with multiple parameters
+const sumArrow = (a, b) => a + b;
+console.log(sumArrow(2, 3)); // 5
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+// #15. CODING STYLE & BEST PRACTICES
+/* Clean code matters more than "clever" code.
+   JavaScript community follows certain conventions.
+*/
+
+// 1. Use meaningful variable names
+// bad:
+let x1 = 10;
+
+// good:
+let maxAttempts = 10;
+
+// 2. camelCase for variables and functions
+let userAge = 15;
+function calculateScore() { }
+
+// 3. UPPER_SNAKE_CASE for constants
+const MAX_USERS = 100;
+
+// 4. One statement per line (readability)
+let a = 1;
+let b = 2;
+
+// 5. Always use === instead of ==
+// == causes implicit type coercion (bugs)
+console.log(0 == false);  // true (bad)
+console.log(0 === false); // false (good)
+
+// 6. Use semicolons consistently
+// JS has Automatic Semicolon Insertion (ASI),
+// but relying on it can break code in edge cases.
+
+// 7. Prefer const, then let — avoid var
+const PI = 3.14;
+// let for changing values
+// var => legacy, function-scoped, error-prone
+
+// 8. Keep functions small (do ONE thing)
+function isEven(n) {
+    return n % 2 === 0;
+}
+
+// 9. Comment WHY, not WHAT
+// bad:
+// i++; // increment i
+
+// good:
+// Move to next index to avoid infinite loop
+i++;
+
+// 10. Use strict mode
+"use strict";
+// prevents silent errors and unsafe behavior
