@@ -11,7 +11,7 @@
    6. undefined => A variable that has not been assigned a value yet
    7. Symbol    => Unique identifier
    
-   8. Object    => Collection of key-value pairs (includes Arrays and Functions)
+   8. Object    => Collection of key-value pairs (includes Arrays and Functions) (check line 258)
 */
 
 // #1. Variables: let, const, var (umizezod varis gamoyeneba => sikvdilit dasja)
